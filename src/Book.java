@@ -1,27 +1,50 @@
-public class Book extends Publication {
-    private final Author author;
+public class Book extends Publication implements Borrowable {
+    private final String author;
     private final Genre genre;
-    private boolean isAvailable;
+    private BookStatus status;
+    private String currentReaderId;
 
-    public Book(String id, int year, Author author, String title, Genre genre) {
-        super(id, year, title);
+    public Book(String title, String author, int publicationYear, Genre genre) {
+        super(title, publicationYear); // Вызов конструктора родительского класса
         this.author = author;
         this.genre = genre;
+        this.status = BookStatus.AVAILABLE;
+        this.currentReaderId = null;
     }
 
-    public Author getAuthor() {
-        return author;
+    @Override
+    public boolean borrow(String readerId) {
+        if (isAvailable()) {
+            this.status = BookStatus.BORROWED;
+            this.currentReaderId = readerId;
+            return true;
+        }
+        return false;
     }
 
-    public Genre getGenre() {
-        return genre;
+    @Override
+    public boolean returnItem() {
+        if (status == BookStatus.BORROWED) {
+            this.status = BookStatus.AVAILABLE;
+            this.currentReaderId = null;
+            return true;
+        }
+        return false;
     }
 
+    @Override
     public boolean isAvailable() {
-        return isAvailable;
+        return status == BookStatus.AVAILABLE;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    @Override
+    public String toString() {
+        return "Book{" +
+                "author='" + author + '\'' +
+                ", genre=" + genre +
+                ", status=" + status +
+                ", title='" + title + '\'' +
+                ", currentReaderId='" + currentReaderId + '\'' +
+                '}';
     }
 }

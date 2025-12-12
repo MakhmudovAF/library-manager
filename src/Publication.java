@@ -1,11 +1,13 @@
 public abstract class Publication {
     protected final String id;
-    protected final int year;
+    protected final int publicationYear;
     protected final String title;
 
-    public Publication(String id, int year, String title) {
-        this.id = id;
-        this.year = year;
+    private static int idCounter = 1000;
+
+    public Publication(String title, int publicationYear) {
+        this.id = "PUB" + (idCounter++);
+        this.publicationYear = publicationYear;
         this.title = title;
     }
 
@@ -13,11 +15,20 @@ public abstract class Publication {
         return id;
     }
 
-    public int getYear() {
-        return year;
+    public int getPublicationYear() {
+        return publicationYear;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    @Override
+    public String toString() {
+        return "Publication{" +
+                "id='" + id + '\'' +
+                ", publicationYear=" + publicationYear +
+                ", title='" + title + '\'' +
+                '}';
     }
 }
