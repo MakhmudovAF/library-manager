@@ -59,6 +59,8 @@ public class Main {
 
         boolean returned = library.returnBook("PUB1000");
         System.out.println("  Книга возвращена: " + returned);
+        readerBooks = library.getBorrowedBooksByReader(readerId);
+        System.out.println("  Читатель " + readerId + " имеет книг: " + readerBooks.size());
 
         System.out.println("\n8. Демонстрация работы с перечислениями:");
         System.out.println("  Доступные жанры:");

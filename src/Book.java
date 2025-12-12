@@ -55,7 +55,6 @@ public class Book extends Publication implements Borrowable {
     public boolean returnItem() {
         if (status == BookStatus.BORROWED) {
             this.status = BookStatus.AVAILABLE;
-            this.currentReaderId = null;
             return true;
         }
         return false;

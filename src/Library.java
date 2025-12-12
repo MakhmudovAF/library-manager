@@ -35,7 +35,7 @@ public class Library {
 
         booksById.put(book.getId(), book);
 
-        allPublications.add(book);
+        if (!allPublications.contains(book)) allPublications.add(book);
 
         Genre genre = book.getGenre();
         genreStatistics.put(genre, genreStatistics.get(genre) + 1);
@@ -86,6 +86,7 @@ public class Library {
         Book book = findBookById(bookId);
         if (book != null && book.returnItem()) {
             String readerId = book.getCurrentReaderId();
+            book.setCurrentReaderId(null);
             if (readerId != null && borrowedBooks.containsKey(readerId)) {
                 borrowedBooks.get(readerId).remove(book);
             }
