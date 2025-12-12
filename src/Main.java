@@ -80,7 +80,7 @@ public class Main {
 
         System.out.println("\n11. Демонстрация инкапсуляции:");
         Book testBook = new Book("Тест", "Автор", 2020, Genre.SCIENCE);
-        
+
         System.out.println("  ID книги: " + testBook.getId());
         System.out.println("  Автор книги: " + testBook.getAuthor());
 
