@@ -1,9 +1,10 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public class Author {
     private final int id;
     private final List<Book> booksWritten;
-    private String name;
+    private final String name;
 
     public Author(int id, String name) {
         this.id = id;
@@ -21,9 +22,5 @@ public class Author {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

@@ -1,17 +1,15 @@
 public abstract class Publication {
-    private final int id;
-    private final int year;
-    private final Author author;
-    private String title;
+    protected final String id;
+    protected final int year;
+    protected final String title;
 
-    public Publication(int id, int year, Author author, String title) {
+    public Publication(String id, int year, String title) {
         this.id = id;
         this.year = year;
-        this.author = author;
         this.title = title;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -19,15 +17,7 @@ public abstract class Publication {
         return year;
     }
 
-    public Author getAuthor() {
-        return author;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 }
